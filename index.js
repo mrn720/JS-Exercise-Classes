@@ -174,16 +174,22 @@ class Airplane {
  class Student extends Lambdasian{
      constructor(studentAttributes) {
        super(studentAttributes);
-       this.previousBackground = previousBackground;
-       this.className = className;
-       this.favSubjects = favSubjects;
+       this.previousBackground = studentAttributes.previousBackground;
+       this.className = studentAttributes.className;
+       this.favSubjects = studentAttributes.favSubjects;
      }
 
      listSubjects() {
        return `Loving ${this.favSubjects}!`
      }
 
-     
+     PRAssignment(subject) {
+       return `${this.name} has submitted a PR for ${subject}`
+     }
+
+     sprintChallenge(subject) {
+       return `${this.name} has begun sprint challenge on ${subject}`
+     }
  }
   
   /*
@@ -199,8 +205,20 @@ class Airplane {
           + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
           + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
   */
- class ProjectManager {
-     
+ class ProjectManager extends Instructor{
+   constructor(pmAttributes) {
+     super(pmAttributes);
+     this.gradClassName = pmAttributes.gradClassName;
+     this.favInstructor = pmAttributes.favInstructor;
+   }
+
+   standUp(slack) {
+     return `${this.name} announces to ${slack}, @channel standy times!`
+   }
+
+   debugsCode(student, subject) {
+     return `${this.name} debugs ${student.name}'s code on ${subject}`
+   }  
  }
   /*
     STRETCH PROBLEM (no tests!)
